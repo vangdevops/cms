@@ -1,21 +1,12 @@
 package main
 
 import (
-	"encoding/json"
+	"api/internal/adapter/web"
 	"log"
 	"net/http"
 )
 
-type User struct {
-	Name string
-}
-
-func handler(w http.ResponseWriter, r *http.Request) {
-	user := User{Name: "hello"}
-	json.NewEncoder(w).Encode(user)
-}
-
 func main() {
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", web.Handler)
 	log.Println(http.ListenAndServe(":8080", nil))
 }
