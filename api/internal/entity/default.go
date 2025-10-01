@@ -8,13 +8,14 @@ type User struct {
 
 type Shop struct {
 	Name        string
+	Products    []Product
 	Description string
 	ID          int64
 	OwnerID     int64
 }
 
 type Product struct {
-	Shop        []Shop
+	Shop        Shop
 	Name        string
 	Description string
 	Price       float64
@@ -23,7 +24,7 @@ type Product struct {
 }
 
 type Order struct {
-	User     []User
+	User     User
 	Products []Product
 	PayType  string
 	Address  string

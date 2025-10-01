@@ -15,7 +15,8 @@ func NewUserHandler(UserService *services.UserService) *UserHandler {
 }
 
 func (handler *UserHandler) Handler(w http.ResponseWriter, r *http.Request) {
-	handler.UserService.Insert("hello")
+	handler.UserService.Create("hello", 1, "+11111111111")
+	user := handler.UserService.GetByID(1)
 	my := json.NewEncoder(w)
-	my.Encode("")
+	my.Encode(user)
 }
