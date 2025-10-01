@@ -2,7 +2,6 @@ package memory
 
 import (
 	"api/internal/entity"
-	"log"
 )
 
 type UserRepository struct {
@@ -17,6 +16,5 @@ func NewUserRepository() *UserRepository {
 
 func (repo *UserRepository) Insert(user *entity.User) error {
 	repo.users = append(repo.users, user)
-	log.Println(user)
 	return nil
 }
