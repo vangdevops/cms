@@ -3,6 +3,7 @@ package handlers
 import (
 	"api/internal/services"
 	"encoding/json"
+	"log"
 	"net/http"
 )
 
@@ -15,6 +16,10 @@ func NewUserHandler(UserService *services.UserService) *UserHandler {
 }
 
 func (handler *UserHandler) Handler(w http.ResponseWriter, r *http.Request) {
+	err := handler.UserService.Insert("hello")
+	if err != nil {
+		log.Println("test fail")
+	}
 	my := json.NewEncoder(w)
 	my.Encode("")
 }
