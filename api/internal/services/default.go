@@ -3,6 +3,7 @@ package services
 import (
 	"api/internal/entity"
 	"api/internal/usecase"
+	"log"
 )
 
 type UserService struct {
@@ -19,6 +20,10 @@ func (Service *UserService) Create(user string, id int64, number string) error {
 }
 
 func (Service *UserService) GetByID(id int64) *entity.User {
-	user := Service.UserRepo.GetByID(id)
+	user, err := Service.UserRepo.GetByID(id)
+	if err != nil {
+		log.Println(err)
+		return nil
+	}
 	return user
 }

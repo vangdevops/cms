@@ -2,7 +2,7 @@ package memory
 
 import (
 	"api/internal/entity"
-	"log"
+	"errors"
 )
 
 type UserRepository struct {
@@ -20,12 +20,11 @@ func (repo *UserRepository) Create(user *entity.User) error {
 	return nil
 }
 
-func (repo *UserRepository) GetByID(id int64) *entity.User {
+func (repo *UserRepository) GetByID(id int64) (*entity.User, error) {
 	for _, val := range repo.users {
 		if val.ID == id {
-			log.Println(id)
-			return val
+			return val, nil
 		}
 	}
-	return nil
+	return nil, errors.New("ID not Found")
 }

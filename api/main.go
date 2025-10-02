@@ -12,6 +12,8 @@ func main() {
 	repo := memory.NewUserRepository()
 	service := services.NewUserService(repo)
 	handler := handlers.NewUserHandler(service)
-	http.HandleFunc("/", handler.Handler)
-	log.Println(http.ListenAndServe(":8080", nil))
+	mux := http.NewServeMux()
+	mux.HandleFunc("/create", handler.Create)
+	mux.HandleFunc("/get/{id}", handler.Get)
+	log.Println(http.ListenAndServe(":8080", mux))
 }
