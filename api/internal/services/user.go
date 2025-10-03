@@ -27,3 +27,8 @@ func (Service *UserService) GetByID(id int64) *entity.User {
 	}
 	return user
 }
+
+func (Service *UserService) DeleteByID(id int64) error {
+	Service.UserRepo.DeleteByID(id)
+	return nil
+}

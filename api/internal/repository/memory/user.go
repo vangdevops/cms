@@ -28,3 +28,7 @@ func (repo *UserRepository) GetByID(id int64) (*entity.User, error) {
 	}
 	return nil, errors.New("ID not Found")
 }
+
+func (repo *UserRepository) DeleteByID(id int64) error {
+	return nil
+}

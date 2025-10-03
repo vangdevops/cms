@@ -32,3 +32,14 @@ func (handler *UserHandler) Get(w http.ResponseWriter, r *http.Request) {
 		my.Encode(user)
 	}
 }
+
+func (handler *UserHandler) DeleteByID(w http.ResponseWriter, r *http.Request) {
+	num, err := strconv.ParseInt(r.PathValue("id"), 10, 64)
+	if err != nil {
+		log.Println(err)
+	} else {
+		handler.UserService.DeleteByID(num)
+		my := json.NewEncoder(w)
+		my.Encode("Deleted")
+	}
+}

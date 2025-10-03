@@ -5,7 +5,7 @@ import "api/internal/entity"
 type UserRepository interface {
 	Create(user *entity.User) error
 	GetByID(id int64) (*entity.User, error)
-	//DeleteByID(id int64) error
+	DeleteByID(id int64) error
 }
 
 type ShopRepository interface {
