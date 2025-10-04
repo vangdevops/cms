@@ -9,13 +9,19 @@ type UserRepository interface {
 }
 
 type ShopRepository interface {
-	Insert(user *entity.User) error
+	Create()
+	Delete()
+	Change()
 }
 
 type ProductRepository interface {
-	Insert(user *entity.User) error
+	Create()
+	Delete()
+	Change()
 }
 
 type OrderRepository interface {
-	Insert(user *entity.User) error
+	Create()
+	Delete()
+	Change()
 }
