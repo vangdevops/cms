@@ -51,6 +51,69 @@ func TestProductSetDescriptionSuccessfully(t *testing.T) {
 	}
 }
 
+func TestProductSetDescriptionError(t *testing.T) {
+	ProductName := gofakeit.Name()
+	ProductWeight := gofakeit.Number(1, 10)
+	ProductDescription := gofakeit.Extension()
+	repo := memory.NewProductRepository()
+	err := repo.SetDescription(ProductName, ProductWeight, ProductDescription)
+	if err == nil {
+		t.Errorf("Test Product SetDescription return Error")
+	}
+}
+
+func TestProductSetImageSuccessfully(t *testing.T) {
+	ProductName := gofakeit.Name()
+	ProductWeight := gofakeit.Number(1, 10)
+	ProductImage := gofakeit.Extension()
+	repo := memory.NewProductRepository()
+	err := repo.Add(ProductName, ProductWeight)
+	if err != nil {
+		t.Errorf("Test Product RepoAdd SetImage return Error")
+	}
+	err = repo.SetImage(ProductName, ProductWeight, ProductImage)
+	if err != nil {
+		t.Errorf("Test Product SetImage return Error")
+	}
+}
+
+func TestProductSetImageError(t *testing.T) {
+	ProductName := gofakeit.Name()
+	ProductWeight := gofakeit.Number(1, 10)
+	ProductImage := gofakeit.Extension()
+	repo := memory.NewProductRepository()
+	err := repo.SetImage(ProductName, ProductWeight, ProductImage)
+	if err == nil {
+		t.Errorf("Test Product SetImage return nil")
+	}
+}
+
+func TestProductSetPriceSuccessfully(t *testing.T) {
+	ProductName := gofakeit.Name()
+	ProductWeight := gofakeit.Number(1, 10)
+	ProductPrice := gofakeit.Extension()
+	repo := memory.NewProductRepository()
+	err := repo.Add(ProductName, ProductWeight)
+	if err != nil {
+		t.Errorf("Test Product RepoAdd SetPrice return Error")
+	}
+	err = repo.SetImage(ProductName, ProductWeight, ProductPrice)
+	if err != nil {
+		t.Errorf("Test Product SetPrice return Error")
+	}
+}
+
+func TestProductSetPriceError(t *testing.T) {
+	ProductName := gofakeit.Name()
+	ProductWeight := gofakeit.Number(1, 10)
+	ProductPrice := gofakeit.Number(1, 10)
+	repo := memory.NewProductRepository()
+	err := repo.SetPrice(ProductName, ProductWeight, ProductPrice)
+	if err == nil {
+		t.Errorf("Test Product SetPrice return nil")
+	}
+}
+
 func TestProductDeleteSuccessfully(t *testing.T) {
 	ProductName := gofakeit.Name()
 	ProductWeight := gofakeit.Number(1, 10)
